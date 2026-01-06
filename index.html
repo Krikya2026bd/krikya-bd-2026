@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Krikya 2026 BD - Official BPL Portal</title>
     <style>
-        /* এনিমেশনসমূহ */
         @keyframes borderGlow {
             0% { border-color: #f0b90b; box-shadow: 0 0 15px #f0b90b; }
             50% { border-color: #00c853; box-shadow: 0 0 30px #00c853; }
@@ -25,38 +24,38 @@
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
-            padding: 20px 0;
+            padding: 20px 10px;
             font-family: 'Segoe UI', Arial, sans-serif;
-            overflow-x: hidden;
             color: white;
         }
 
         .container {
-            width: 92%;
-            max-width: 420px;
+            width: 100%;
+            max-width: 400px;
             position: relative;
         }
 
-        /* মোস্তাফিজুর বোলিং থিম (দুই পাশে) */
-        .fizz-img {
-            position: absolute;
-            top: 20px;
-            width: 100px;
-            z-index: -1;
-            opacity: 0.5;
-            filter: drop-shadow(0 0 10px #00c853);
-        }
-        .fizz-left { left: -35px; }
-        .fizz-right { right: -35px; transform: scaleX(-1); }
-
         .card {
             background: #1e2329;
-            padding: 30px 20px;
-            border-radius: 35px;
+            padding: 20px;
+            border-radius: 30px;
             border: 3px solid #f0b90b;
             text-align: center;
             animation: borderGlow 4s infinite;
+            position: relative;
+            overflow: hidden; /* ছবি কার্ডের ভেতরে রাখার জন্য */
         }
+
+        /* মোস্তাফিজের ছবি কার্ডের ভেতরে দুই কোণায় */
+        .fizz-img {
+            position: absolute;
+            width: 80px; /* সাইজ কিছুটা ছোট করা হয়েছে মোবাইলের জন্য */
+            z-index: 1;
+            opacity: 0.8;
+            bottom: 10px;
+        }
+        .fizz-left { left: -10px; }
+        .fizz-right { right: -10px; transform: scaleX(-1); }
 
         .bpl-badge {
             background: #00c853;
@@ -64,45 +63,40 @@
             padding: 5px 15px;
             border-radius: 20px;
             font-weight: 900;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             display: inline-block;
             margin-bottom: 10px;
-            text-transform: uppercase;
         }
 
         .logo {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             font-weight: 900;
             color: #f0b90b;
-            text-shadow: 0 0 20px #f0b90b;
             margin: 0;
-            font-style: italic;
+            line-height: 1.1;
         }
 
         .sub-logo {
-            font-size: 1.1rem;
-            color: #fff;
-            letter-spacing: 3px;
+            font-size: 1rem;
+            letter-spacing: 2px;
             margin-bottom: 15px;
-            text-transform: uppercase;
         }
 
         .bonus-banner {
             background: linear-gradient(90deg, #ff0055, #f0b90b);
-            padding: 12px;
+            padding: 10px;
             border-radius: 12px;
             font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+            font-size: 1rem;
+            margin-bottom: 15px;
         }
 
-        /* ১.৫ সেকেন্ড উইন স্লাইড */
         .win-box {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             border: 2px solid #00c853;
-            border-radius: 15px;
-            height: 50px;
-            margin-bottom: 20px;
+            border-radius: 12px;
+            height: 45px;
+            margin-bottom: 15px;
             overflow: hidden;
             position: relative;
             display: flex;
@@ -113,56 +107,57 @@
         #win-text {
             white-space: nowrap;
             font-weight: bold;
-            font-size: 1rem;
             position: absolute;
         }
 
         .info-section {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 20px;
+            padding: 12px;
+            margin-bottom: 15px;
             text-align: left;
+            position: relative;
+            z-index: 2; /* টেক্সট যেন ছবির উপরে থাকে */
         }
-        .info-item { display: flex; align-items: center; margin-bottom: 8px; font-size: 0.9rem; }
-        .info-item span { color: #f0b90b; margin-right: 10px; font-weight: bold; }
+        .info-item { display: flex; align-items: center; margin-bottom: 5px; font-size: 0.85rem; }
+        .info-item span { color: #f0b90b; margin-right: 8px; }
 
         .payment-row {
             display: flex;
             justify-content: space-around;
             background: white;
-            padding: 12px;
-            border-radius: 15px;
-            margin-bottom: 25px;
+            padding: 10px;
+            border-radius: 12px;
+            margin-bottom: 20px;
         }
-        .payment-row b { font-size: 0.85rem; font-weight: 900; }
+        .payment-row b { color: #000; font-size: 0.75rem; }
 
         .btn {
-            padding: 18px;
-            border-radius: 50px;
-            font-size: 1.6rem;
+            padding: 15px;
+            border-radius: 40px;
+            font-size: 1.3rem;
             font-weight: 900;
             text-decoration: none;
             display: block;
-            margin-bottom: 12px;
-            text-align: center;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 3;
         }
-        .btn-green { background: #00c853; color: #000; box-shadow: 0 5px 15px rgba(0,200,83,0.4); }
+        .btn-green { background: #00c853; color: #000; }
         .btn-gold { background: #f0b90b; color: #000; }
 
-        .footer-txt { font-size: 0.7rem; color: #777; margin-top: 15px; }
         .animate-slide { animation: slideInRight 1.5s linear infinite; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <img src="https://www.freeiconspng.com/uploads/cricket-player-png-23.png" class="fizz-img fizz-left" alt="Fizz">
-        <img src="https://www.freeiconspng.com/uploads/cricket-player-png-23.png" class="fizz-img fizz-right" alt="Fizz">
-
         <div class="card">
+            <img src="https://www.freeiconspng.com/uploads/cricket-player-png-23.png" class="fizz-img fizz-left">
+            <img src="https://www.freeiconspng.com/uploads/cricket-player-png-23.png" class="fizz-img fizz-right">
+
             <div class="bpl-badge">BPL 2026 SPECIAL</div>
-            <div class="logo">KRIKYA 2026 BD</div>
+            <div class="logo">KRIKYA 2026<br>BD</div>
             <div class="sub-logo">TRUSTED PLATFORM</div>
             
             <div class="bonus-banner">WELCOME 100% BONUS <br> UP TO 20,000 BDT</div>
@@ -186,12 +181,7 @@
             </div>
 
             <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-green">⚡ SIGN-UP NOW</a>
-            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-gold">🎁 CLAIM BONUS</a>
-
-            <div class="footer-txt">
-                © 2026 KRIKYA 2026 BD | All Rights Reserved. <br>
-                মোস্তাফিজের সাথে খেলুন, জিতে নিন লাখ টাকা!
-            </div>
+            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-gold">🎁 GET BONUS</a>
         </div>
     </div>
 
@@ -199,14 +189,10 @@
         const winners = [
             { n: "Sabbir***", w: "5,450 BDT ✈️" },
             { n: "Mintu***", w: "12,800 BDT 🎰" },
-            { n: "Rashed***", w: "3,200 BDT 🎡" },
-            { n: "Ariful***", w: "7,500 BDT 🏏" },
-            { n: "Tanvir***", w: "15,200 BDT 🎰" }
+            { n: "Ariful***", w: "7,500 BDT 🏏" }
         ];
-
         let i = 0;
         const txt = document.getElementById('win-text');
-
         function show() {
             txt.innerHTML = `<span style="color:#00c853">${winners[i].n}</span> <span style="color:white">WON</span> <span style="color:#ffa500">${winners[i].w}</span>`;
             txt.classList.remove('animate-slide');
@@ -214,10 +200,8 @@
             txt.classList.add('animate-slide');
             i = (i + 1) % winners.length;
         }
-
         setInterval(show, 1500); 
         show();
     </script>
-
 </body>
 </html>
