@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KRIKYA Official - Sign Up</title>
     <style>
-        /* এনিমেশন: পুরো বডির জন্য নিওন বর্ডার */
+        /* এনিমেশন: পুরো কার্ডের লাইটিং বর্ডার */
         @keyframes borderGlow {
             0% { border-color: #f0b90b; box-shadow: 0 0 15px #f0b90b; }
             50% { border-color: #ff0055; box-shadow: 0 0 30px #ff0055; }
             100% { border-color: #f0b90b; box-shadow: 0 0 15px #f0b90b; }
+        }
+
+        /* সাইন-আপ বাটনের পালস এনিমেশন */
+        @keyframes signupPulse {
+            0% { transform: scale(1); box-shadow: 0 0 10px #00c853; }
+            50% { transform: scale(1.05); box-shadow: 0 0 30px #00c853; }
+            100% { transform: scale(1); box-shadow: 0 0 10px #00c853; }
         }
 
         body {
@@ -33,7 +40,6 @@
             animation: borderGlow 4s infinite;
         }
 
-        /* অরিজিনাল KRIKYA লোগো লুক */
         .logo {
             font-size: 3rem;
             font-weight: 900;
@@ -44,20 +50,46 @@
             font-style: italic;
         }
 
-        /* ইমেজের বদলে আকর্ষণীয় অফার টেক্সট */
+        /* নতুন ফিচার: লাইভ উইনিং স্ট্যাটাস */
+        .live-win-box {
+            background: rgba(0, 200, 83, 0.1);
+            border: 1px dashed #00c853;
+            border-radius: 12px;
+            padding: 10px;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            color: #b2ff59;
+        }
+
+        /* নতুন ফিচার: ১০০% উইনিং রেট ব্যানার */
         .promo-box {
-            background: linear-gradient(135deg, #ff0055, #ffcc00);
+            background: linear-gradient(135deg, #000, #333);
             border-radius: 15px;
             padding: 20px;
             margin: 15px 0;
-            border: 2px solid white;
+            border: 1px solid #f0b90b;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-box::after {
+            content: "FAST PAYOUT";
+            position: absolute;
+            top: 5px;
+            right: -15px;
+            background: #f0b90b;
+            color: black;
+            font-size: 8px;
+            padding: 2px 15px;
+            transform: rotate(45deg);
+            font-weight: bold;
         }
 
         .promo-text {
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             font-weight: 900;
             color: #ffffff;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            line-height: 1.2;
         }
 
         .icon-grid {
@@ -86,13 +118,12 @@
         .btn-green {
             background: linear-gradient(90deg, #00c853, #b2ff59);
             color: #000;
-            box-shadow: 0 5px 20px rgba(0, 200, 83, 0.4);
+            animation: signupPulse 2s infinite;
         }
 
         .btn-gold {
             background: linear-gradient(90deg, #f0b90b, #ffcc00);
             color: #000;
-            box-shadow: 0 5px 20px rgba(240, 185, 11, 0.4);
         }
     </style>
 </head>
@@ -100,11 +131,14 @@
 
     <div class="card">
         <div class="logo">KRIKYA</div>
-        <p style="color: #848e9c; margin-bottom: 20px;">Bangladesh Official Partner</p>
+        
+        <div class="live-win-box">
+            🟢 <span id="win-text">Sabbir*** just won 5,400 BDT in Aviator!</span>
+        </div>
 
         <div class="promo-box">
-            <span style="color: black; font-weight: bold;">WELCOME BONUS</span>
-            <div class="promo-text">২০,০০০ BDT</div>
+            <span style="color: #f0b90b; font-size: 0.8rem;">TRUSTED PLATFORM 2026</span>
+            <div class="promo-text">100% FAST DEPOSIT & <br>WITHDRAWAL ✅</div>
         </div>
 
         <div class="icon-grid">
@@ -116,9 +150,24 @@
 
         <div class="btn-group">
             <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-green">⚡ SIGN-UP NOW</a>
-            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-gold">🎁 CLAIM BONUS</a>
+            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-gold">🎁 CLAIM FREE SPINS</a>
         </div>
     </div>
+
+    <script>
+        // লাইভ উইনারদের নাম পরিবর্তন করার স্ক্রিপ্ট
+        const winners = [
+            "Sabbir*** just won 5,400 BDT in Aviator!",
+            "Mintu*** just won 12,000 BDT in Slots!",
+            "Rashed*** just won 3,500 BDT in Roulette!",
+            "Ariful*** just won 8,200 BDT in Crazy Time!"
+        ];
+        let i = 0;
+        setInterval(() => {
+            document.getElementById('win-text').innerText = winners[i];
+            i = (i + 1) % winners.length;
+        }, 3000);
+    </script>
 
 </body>
 </html>
