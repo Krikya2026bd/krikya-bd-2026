@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KRIKYA Official - Fast Payout</title>
+    <title>KRIKYA Official - Live Wins</title>
     <style>
-        /* এনিমেশন: লাইটিং বর্ডার */
+        /* পুরো কার্ডের গ্লো এনিমেশন */
         @keyframes borderGlow {
             0% { border-color: #f0b90b; box-shadow: 0 0 15px #f0b90b; }
             50% { border-color: #ff0055; box-shadow: 0 0 30px #ff0055; }
             100% { border-color: #f0b90b; box-shadow: 0 0 15px #f0b90b; }
         }
 
-        /* সাইন-আপ বাটনের পালস এনিমেশন */
-        @keyframes signupPulse {
-            0% { transform: scale(1); box-shadow: 0 0 10px #00c853; }
-            50% { transform: scale(1.05); box-shadow: 0 0 30px #00c853; }
-            100% { transform: scale(1); box-shadow: 0 0 10px #00c853; }
+        /* রাইট স্লাইড এনিমেশন */
+        @keyframes slideInRight {
+            0% { transform: translateX(100%); opacity: 0; }
+            10% { transform: translateX(0); opacity: 1; }
+            90% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(-100%); opacity: 0; }
         }
 
         body {
@@ -27,6 +28,7 @@
             align-items: center;
             min-height: 100vh;
             font-family: 'Segoe UI', Arial, sans-serif;
+            overflow-x: hidden;
         }
 
         .card {
@@ -38,6 +40,7 @@
             border: 3px solid #f0b90b;
             text-align: center;
             animation: borderGlow 4s infinite;
+            overflow: hidden;
         }
 
         .logo {
@@ -50,20 +53,35 @@
             font-style: italic;
         }
 
-        /* লাইভ উইন বক্স - অরেঞ্জ কালার টেক্সট */
+        /* লাইভ উইন বক্স - গ্রিন বর্ডার */
         .live-win-box {
-            background: rgba(255, 165, 0, 0.1);
-            border: 1px dashed #ffa500;
+            background: rgba(0, 200, 83, 0.05);
+            border: 2px solid #00c853; /* গ্রিন বর্ডার */
             border-radius: 12px;
-            padding: 10px;
+            padding: 12px;
             margin: 10px 0;
-            font-size: 0.95rem;
-            font-weight: bold;
-            color: #ffa500; /* অরেঞ্জ কালার */
-            transition: opacity 0.5s ease-in-out;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
         }
 
-        /* স্পিড মেসেজ */
+        #win-content {
+            display: inline-block;
+            white-space: nowrap;
+            font-weight: bold;
+            font-size: 0.9rem;
+            position: absolute;
+        }
+
+        /* নামের কালার - গ্রিন */
+        .user-name { color: #00c853; }
+        
+        /* Won এমাউন্ট ও গেমের কালার - অরেঞ্জ */
+        .won-info { color: #ffa500; }
+
         .speed-box {
             background: linear-gradient(90deg, #1e3c72, #2a5298);
             border: 1px solid #00d2ff;
@@ -72,14 +90,8 @@
             margin: 15px 0 10px;
         }
 
-        .speed-text {
-            color: #ffffff;
-            font-weight: bold;
-            font-size: 1rem;
-            line-height: 1.4;
-        }
+        .speed-text { color: #ffffff; font-weight: bold; font-size: 1rem; }
 
-        /* পেমেন্ট মেথড লোগো */
         .payment-methods {
             display: flex;
             justify-content: center;
@@ -90,10 +102,7 @@
             margin-bottom: 15px;
         }
 
-        .payment-methods img {
-            height: 25px;
-            width: auto;
-        }
+        .payment-methods img { height: 25px; }
 
         .icon-grid {
             display: flex;
@@ -116,17 +125,23 @@
             font-weight: bold;
             text-decoration: none;
             text-transform: uppercase;
+            transition: 0.3s;
         }
 
         .btn-green {
             background: linear-gradient(90deg, #00c853, #b2ff59);
             color: #000;
-            animation: signupPulse 2s infinite;
+            box-shadow: 0 0 15px rgba(0, 200, 83, 0.4);
         }
 
         .btn-gold {
             background: linear-gradient(90deg, #f0b90b, #ffcc00);
             color: #000;
+        }
+
+        /* স্লাইড এনিমেশন ক্লাস */
+        .animate-slide {
+            animation: slideInRight 4s linear infinite;
         }
     </style>
 </head>
@@ -136,7 +151,11 @@
         <div class="logo">KRIKYA</div>
         
         <div class="live-win-box">
-            <span id="win-text">Sabbir*** just won 5,450 BDT in Aviator! ✈️</span>
+            <div id="win-content">
+                <span class="user-name" id="user-name">Sabbir***</span> 
+                <span style="color: white;"> just won </span> 
+                <span class="won-info" id="won-amount">5,450 BDT in Aviator! ✈️</span>
+            </div>
         </div>
 
         <div class="speed-box">
@@ -168,27 +187,40 @@
 
     <script>
         const winners = [
-            "Sabbir*** just won 5,450 BDT in Aviator! ✈️",
-            "Mintu*** just won 12,800 BDT in Super Ace! 🎰",
-            "Rashed*** just won 3,200 BDT in Roulette! 🎡",
-            "Ariful*** just won 7,500 BDT in Crazy Time! 🎡",
-            "Tanvir*** just won 15,200 BDT in Baccarat! 🃏",
-            "Sumon*** just won 4,100 BDT in Jili Slots! 🎰",
-            "Fahim*** just won 9,800 BDT in Cricket Star! 🏏",
-            "Emon*** just won 22,000 BDT in Mega Ball! 🎱",
-            "Noyon*** just won 6,400 BDT in Dragon Tiger! 🐯",
-            "Kamal*** just won 11,300 BDT in Sic Bo! 🎲"
+            { name: "Sabbir***", info: "5,450 BDT in Aviator! ✈️" },
+            { name: "Mintu***", info: "12,800 BDT in Super Ace! 🎰" },
+            { name: "Rashed***", info: "3,200 BDT in Roulette! 🎡" },
+            { name: "Ariful***", info: "7,500 BDT in Crazy Time! 🎡" },
+            { name: "Tanvir***", info: "15,200 BDT in Baccarat! 🃏" },
+            { name: "Sumon***", info: "4,100 BDT in Jili Slots! 🎰" },
+            { name: "Fahim***", info: "9,800 BDT in Cricket Star! 🏏" },
+            { name: "Emon***", info: "22,000 BDT in Mega Ball! 🎱" },
+            { name: "Noyon***", info: "6,400 BDT in Dragon Tiger! 🐯" },
+            { name: "Kamal***", info: "11,300 BDT in Sic Bo! 🎲" }
         ];
+
         let i = 0;
-        setInterval(() => {
-            const winElement = document.getElementById('win-text');
-            winElement.style.opacity = 0;
-            setTimeout(() => {
-                winElement.innerText = winners[i];
-                winElement.style.opacity = 1;
-                i = (i + 1) % winners.length;
-            }, 500);
-        }, 3500);
+        const winContent = document.getElementById('win-content');
+        const userName = document.getElementById('user-name');
+        const wonAmount = document.getElementById('won-amount');
+
+        function startAnimation() {
+            // ডাটা আপডেট
+            userName.innerText = winners[i].name;
+            wonAmount.innerText = winners[i].info;
+            
+            // এনিমেশন রিস্টার্ট
+            winContent.classList.remove('animate-slide');
+            void winContent.offsetWidth; // রিফ্লো
+            winContent.classList.add('animate-slide');
+            
+            i = (i + 1) % winners.length;
+        }
+
+        // শুরুতে এনিমেশন চালু
+        startAnimation();
+        // প্রতি ৪ সেকেন্ডে নতুন ডাটা এবং স্লাইড
+        setInterval(startAnimation, 4000);
     </script>
 
 </body>
