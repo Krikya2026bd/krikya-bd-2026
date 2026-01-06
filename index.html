@@ -30,56 +30,62 @@
             align-items: center;
             min-height: 100vh;
             text-align: center;
+            padding: 20px 0;
         }
 
         .main-card {
             background: #161b22;
-            padding: 30px 20px;
+            padding: 25px;
             border-radius: 20px;
             border: 3px solid #f0b90b;
-            max-width: 420px;
+            max-width: 400px;
             width: 90%;
             animation: borderGlow 4s infinite;
         }
 
-        h1 { color: #f0b90b; font-size: 2rem; margin-bottom: 10px; }
+        .hero-img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #30363d;
+        }
 
-        /* গেম সেকশন */
+        h1 { color: #f0b90b; font-size: 1.8rem; margin: 10px 0; }
+
         .games-list {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
         }
         .game-tag {
             background: #30363d;
             padding: 5px 10px;
             border-radius: 5px;
             color: #ffcc00;
-            border: 1px solid #444;
+            font-size: 0.8rem;
+            font-weight: bold;
         }
 
         .bonus-banner {
             background: linear-gradient(45deg, #ff0055, #ffcc00);
             padding: 15px;
             border-radius: 15px;
-            color: #fff;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         .bonus-amount {
-            font-size: 2.2rem;
+            font-size: 2rem;
             display: block;
             font-weight: 900;
+            color: #fff;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
         }
 
-        /* বাটন স্টাইল */
         .btn-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .btn-signup {
@@ -87,11 +93,10 @@
             color: #000;
             padding: 15px;
             border-radius: 50px;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: bold;
             text-decoration: none;
             animation: pulseEffect 2s infinite;
-            box-shadow: 0 5px 15px rgba(0, 200, 83, 0.4);
         }
 
         .btn-claim {
@@ -99,15 +104,14 @@
             color: #fff;
             padding: 15px;
             border-radius: 50px;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: bold;
             text-decoration: none;
             animation: pulseEffect 1.5s infinite;
-            box-shadow: 0 5px 15px rgba(240, 185, 11, 0.4);
         }
 
         .footer-text {
-            margin-top: 20px;
+            margin-top: 15px;
             color: #8b949e;
             font-size: 0.8rem;
         }
@@ -116,6 +120,8 @@
 <body>
 
     <div class="main-card">
+        <img src="https://raw.githubusercontent.com/krikya2026bd/krikya-bd-2026/main/images%20-%202026-01-05T131733.152.jpeg" alt="Krikya Promo" class="hero-img">
+        
         <h1>🚀 KRIKYA 2026 BD 🚀</h1>
         
         <div class="games-list">
@@ -125,21 +131,16 @@
         </div>
 
         <div class="bonus-banner">
-            <span style="font-size: 1.1rem;">WELCOME BONUS</span>
+            <span style="font-weight: bold;">WELCOME BONUS</span>
             <span class="bonus-amount">২০,০০০ BDT 💰</span>
         </div>
 
         <div class="btn-container">
-            <a href="https://www.krikya11.club/?af=AG044301" class="btn-signup">
-                📝 SIGN-UP NOW
-            </a>
-
-            <a href="https://www.krikya11.club/?af=AG044301" class="btn-claim">
-                🎁 CLAIM BONUS NOW
-            </a>
+            <a href="https://www.krikya11.club/?af=AG044301" class="btn-signup">📝 SIGN-UP NOW</a>
+            <a href="https://www.krikya11.club/?af=AG044301" class="btn-claim">🎁 CLAIM BONUS NOW</a>
         </div>
 
-        <p class="footer-text">অফারটি সীমিত সময়ের জন্য। এখনই একাউন্ট খুলুন!</p>
+        <p class="footer-text">অফারটি সীমিত সময়ের জন্য। এখনই যোগ দিন!</p>
     </div>
 
 </body>
