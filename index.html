@@ -5,17 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KRIKYA Official - Live Wins</title>
     <style>
+        /* পুরো কার্ডের নিওন গ্লো এনিমেশন */
         @keyframes borderGlow {
-            0% { border-color: #f0b90b; box-shadow: 0 0 15px #f0b90b; }
-            50% { border-color: #ff0055; box-shadow: 0 0 30px #ff0055; }
-            100% { border-color: #f0b90b; box-shadow: 0 0 15px #f0b90b; }
+            0% { border-color: #f0b90b; box-shadow: 0 0 20px #f0b90b; }
+            50% { border-color: #ff0055; box-shadow: 0 0 40px #ff0055; }
+            100% { border-color: #f0b90b; box-shadow: 0 0 20px #f0b90b; }
         }
 
+        /* রাইট স্লাইড এনিমেশন */
         @keyframes slideInRight {
             0% { transform: translateX(100%); opacity: 0; }
             10% { transform: translateX(0); opacity: 1; }
             90% { transform: translateX(0); opacity: 1; }
             100% { transform: translateX(-100%); opacity: 0; }
+        }
+
+        /* বাটনের লাইটিং এনিমেশন */
+        @keyframes lightingBtn {
+            0% { background-position: 0% 50%; box-shadow: 0 0 10px #00c853; }
+            50% { background-position: 100% 50%; box-shadow: 0 0 30px #b2ff59; }
+            100% { background-position: 0% 50%; box-shadow: 0 0 10px #00c853; }
         }
 
         body {
@@ -34,101 +43,100 @@
             width: 90%;
             max-width: 400px;
             padding: 25px;
-            border-radius: 25px;
+            border-radius: 30px;
             border: 3px solid #f0b90b;
             text-align: center;
             animation: borderGlow 4s infinite;
-            overflow: hidden;
         }
 
         .logo {
-            font-size: 3rem;
+            font-size: 3.2rem;
             font-weight: 900;
             color: #f0b90b;
             letter-spacing: 5px;
-            text-shadow: 0 0 15px #f0b90b;
-            margin-bottom: 5px;
+            text-shadow: 0 0 20px #f0b90b;
+            margin-bottom: 15px;
             font-style: italic;
         }
 
+        /* লাইভ উইন ডিজাইন - উন্নত লুক */
         .live-win-box {
-            background: rgba(0, 200, 83, 0.05);
+            background: linear-gradient(135deg, rgba(0, 200, 83, 0.1), rgba(0, 0, 0, 0.4));
             border: 2px solid #00c853;
-            border-radius: 12px;
-            padding: 12px;
+            border-radius: 15px;
+            padding: 15px;
             margin: 10px 0;
-            height: 45px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             position: relative;
+            box-shadow: inset 0 0 10px rgba(0, 200, 83, 0.2);
         }
 
         #win-content {
-            display: inline-block;
             white-space: nowrap;
             font-weight: bold;
-            font-size: 0.95rem;
+            font-size: 1rem;
             position: absolute;
         }
 
-        .user-name { color: #00c853; }
-        .won-info { color: #ffa500; }
+        .user-name { color: #00c853; text-decoration: underline; }
+        .won-info { color: #ffa500; text-shadow: 0 0 5px rgba(255, 165, 0, 0.5); }
 
         .speed-box {
             background: linear-gradient(90deg, #1e3c72, #2a5298);
-            border: 1px solid #00d2ff;
             border-radius: 15px;
             padding: 12px;
-            margin: 15px 0 10px;
+            margin: 15px 0;
+            border-left: 5px solid #00d2ff;
         }
 
-        .speed-text { color: #ffffff; font-weight: bold; font-size: 1rem; }
+        .speed-text { color: #ffffff; font-weight: bold; font-size: 1.1rem; }
 
-        /* পেমেন্ট মেথড লোগো ফিক্স */
+        /* পেমেন্ট লোগো সেকশন - টেক্সট লোগো (গ্যারান্টিড লোড) */
         .payment-methods {
             display: flex;
             justify-content: space-around;
             align-items: center;
             background: #ffffff;
-            padding: 12px;
+            padding: 10px;
             border-radius: 15px;
             margin-bottom: 20px;
         }
 
-        .payment-methods img {
-            height: 20px;
-            max-width: 70px;
-            object-fit: contain;
+        .pay-item {
+            font-weight: 900;
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 5px;
         }
+        .bkash { color: #D12053; border: 1px solid #D12053; }
+        .nagad { color: #F7941D; border: 1px solid #F7941D; }
+        .rocket { color: #8C3494; border: 1px solid #8C3494; }
+        .upay { color: #FFD200; background: #000; padding: 4px 8px; }
 
-        .icon-grid {
-            display: flex;
-            justify-content: space-around;
-            background: #161b22;
-            padding: 15px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-        }
-
-        .icon-item { font-size: 0.7rem; color: #f0b90b; font-weight: bold; }
-        .icon-item img { width: 35px; height: 35px; display: block; margin: 0 auto 5px; }
-
-        .btn-group { display: flex; flex-direction: column; gap: 15px; }
+        .btn-group { display: flex; flex-direction: column; gap: 20px; }
 
         .btn {
-            padding: 18px;
+            padding: 20px;
             border-radius: 50px;
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.6rem;
+            font-weight: 900;
             text-decoration: none;
             text-transform: uppercase;
+            display: block;
+            transition: 0.3s;
         }
 
+        /* সাইন আপ লাইটিং বাটন */
         .btn-green {
-            background: linear-gradient(90deg, #00c853, #b2ff59);
+            background: linear-gradient(-45deg, #00c853, #b2ff59, #00c853, #b2ff59);
+            background-size: 400% 400%;
             color: #000;
+            animation: lightingBtn 3s infinite;
+            border: 2px solid #fff;
         }
 
         .btn-gold {
@@ -147,7 +155,7 @@
         <div class="live-win-box">
             <div id="win-content">
                 <span class="user-name" id="user-name">Sabbir***</span> 
-                <span style="color: white;"> just won </span> 
+                <span style="color: white;"> WON </span> 
                 <span class="won-info" id="won-amount">5,450 BDT in Aviator! ✈️</span>
             </div>
         </div>
@@ -155,27 +163,20 @@
         <div class="speed-box">
             <div class="speed-text">
                 ⚡ ডিপোজিট এবং উত্তোলন <br>
-                <span style="color: #ffcc00;">১ মিনিটের মধ্যে সম্পন্ন!</span>
+                <span style="color: #ffcc00;">১ মিনিটের গ্যারান্টি!</span>
             </div>
         </div>
 
         <div class="payment-methods">
-            <img src="https://www.logo.wine/a/logo/BKash/BKash-Logo.wine.svg" alt="bkash">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Nagad_Logo.svg/2560px-Nagad_Logo.svg.png" alt="nagad">
-            <img src="https://seeklogo.com/images/R/rocket-logo-59A669FBB1-seeklogo.com.png" alt="rocket">
-            <img src="https://seeklogo.com/images/U/upay-logo-8494B4E8F8-seeklogo.com.png" alt="upay">
-        </div>
-
-        <div class="icon-grid">
-            <div class="icon-item"><img src="https://img.icons8.com/color/96/cricket.png">CRICKET</div>
-            <div class="icon-item"><img src="https://img.icons8.com/color/96/slot-machine.png">SLOTS</div>
-            <div class="icon-item"><img src="https://img.icons8.com/color/96/roulette.png">CASINO</div>
-            <div class="icon-item"><img src="https://img.icons8.com/color/96/airplane-take-off.png">AVIATOR</div>
+            <div class="pay-item bkash">bKash</div>
+            <div class="pay-item nagad">Nagad</div>
+            <div class="pay-item rocket">Rocket</div>
+            <div class="pay-item upay">upay</div>
         </div>
 
         <div class="btn-group">
-            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-green">⚡ SIGN-UP NOW</a>
-            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-gold">🎁 CLAIM FREE SPINS</a>
+            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-green">⚡ SIGN-UP NOW ⚡</a>
+            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-gold">🎁 CLAIM BONUS</a>
         </div>
     </div>
 
