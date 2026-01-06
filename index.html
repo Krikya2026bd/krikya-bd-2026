@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krikya-BD-2026 - Official BPL Portal</title>
+    <title>Krikya BD 2026 - Official</title>
     <style>
-        @keyframes borderGlow {
-            0% { border-color: #f0b90b; box-shadow: 0 0 15px #f0b90b; }
-            50% { border-color: #00c853; box-shadow: 0 0 30px #00c853; }
-            100% { border-color: #f0b90b; box-shadow: 0 0 15px #f0b90b; }
+        @keyframes glow {
+            0% { border-color: #f0b90b; box-shadow: 0 0 10px #f0b90b; }
+            50% { border-color: #00c853; box-shadow: 0 0 20px #00c853; }
+            100% { border-color: #f0b90b; box-shadow: 0 0 10px #f0b90b; }
         }
-        @keyframes slideInRight {
-            0% { transform: translateX(100%); opacity: 0; }
-            10% { transform: translateX(0); opacity: 1; }
-            90% { transform: translateX(0); opacity: 1; }
-            100% { transform: translateX(-100%); opacity: 0; }
+        @keyframes slide {
+            0% { transform: translateX(120%); }
+            100% { transform: translateX(-120%); }
         }
 
         body {
@@ -22,186 +20,150 @@
             margin: 0;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding: 20px 10px;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             color: white;
+            padding: 15px;
         }
 
-        .container {
+        .main-card {
             width: 100%;
-            max-width: 400px;
-            position: relative;
-        }
-
-        .card {
+            max-width: 380px;
             background: #1e2329;
-            padding: 20px;
-            border-radius: 30px;
+            border-radius: 25px;
             border: 3px solid #f0b90b;
             text-align: center;
-            animation: borderGlow 4s infinite;
+            padding: 20px;
             position: relative;
-            overflow: hidden; /* ছবি কার্ডের ভেতরে রাখার জন্য */
-        }
-
-        /* মোস্তাফিজের ছবি কার্ডের ভেতরে দুই কোণায় */
-        .fizz-img {
-            position: absolute;
-            width: 80px; /* সাইজ কিছুটা ছোট করা হয়েছে মোবাইলের জন্য */
-            z-index: 1;
-            opacity: 0.8;
-            bottom: 10px;
-        }
-        .fizz-left { left: -10px; }
-        .fizz-right { right: -10px; transform: scaleX(-1); }
-
-        .bpl-badge {
-            background: #00c853;
-            color: #000;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: 900;
-            font-size: 0.75rem;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        .logo {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: #f0b90b;
-            margin: 0;
-            line-height: 1.1;
-        }
-
-        .sub-logo {
-            font-size: 1rem;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-
-        .bonus-banner {
-            background: linear-gradient(90deg, #ff0055, #f0b90b);
-            padding: 10px;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 1rem;
-            margin-bottom: 15px;
-        }
-
-        .win-box {
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid #00c853;
-            border-radius: 12px;
-            height: 45px;
-            margin-bottom: 15px;
             overflow: hidden;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            animation: glow 4s infinite;
         }
 
-        #win-text {
-            white-space: nowrap;
-            font-weight: bold;
-            position: absolute;
+        /* মোস্তাফিজের আকর্ষণীয় বোলিং ছবি */
+        .fizz-img {
+            width: 130px;
+            margin: 10px 0;
+            filter: drop-shadow(0 0 8px #00c853);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .info-section {
-            background: rgba(255, 255, 255, 0.05);
+        /* কমলা কালার বর্ডারড টাইটেল */
+        .brand-title {
+            border: 2px solid #ff9800;
+            padding: 8px 15px;
+            border-radius: 12px;
+            display: inline-block;
+            background: rgba(255, 152, 0, 0.1);
+            margin-top: 10px;
+        }
+        .brand-title h1 {
+            color: #ff9800;
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-shadow: 1px 1px 3px #000;
+        }
+
+        /* রঙিন ডিপোজিট ও উত্তোলন লেখা */
+        .info-box {
+            background: rgba(255,255,255,0.05);
             border-radius: 15px;
-            padding: 12px;
-            margin-bottom: 15px;
+            padding: 15px;
+            margin: 20px 0;
             text-align: left;
-            position: relative;
-            z-index: 2; /* টেক্সট যেন ছবির উপরে থাকে */
         }
-        .info-item { display: flex; align-items: center; margin-bottom: 5px; font-size: 0.85rem; }
-        .info-item span { color: #f0b90b; margin-right: 8px; }
+        .info-box b { font-size: 1.1rem; }
+        .pink-text { color: #e91e63; font-weight: 900; } /* বিকাশ স্টাইল */
+        .orange-text { color: #ff9800; font-weight: 900; } /* নগদ স্টাইল */
 
-        .payment-row {
+        /* পেমেন্ট লোগো সেকশন */
+        .payment-icons {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
+            gap: 15px;
             background: white;
             padding: 10px;
-            border-radius: 12px;
+            border-radius: 15px;
             margin-bottom: 20px;
         }
-        .payment-row b { color: #000; font-size: 0.75rem; }
-
-        .btn {
-            padding: 15px;
-            border-radius: 40px;
-            font-size: 1.3rem;
-            font-weight: 900;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 3;
+        .payment-icons img {
+            height: 30px;
+            object-fit: contain;
         }
-        .btn-green { background: #00c853; color: #000; }
-        .btn-gold { background: #f0b90b; color: #000; }
 
-        .animate-slide { animation: slideInRight 1.5s linear infinite; }
+        /* উইনার স্লাইডার */
+        .slider-box {
+            background: #000;
+            border: 1px solid #00c853;
+            height: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .slider-text {
+            position: absolute;
+            white-space: nowrap;
+            width: 100%;
+            font-weight: bold;
+            animation: slide 6s linear infinite;
+        }
+
+        .action-btn {
+            display: block;
+            padding: 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            transition: 0.3s;
+        }
+        .btn-signup { background: #00c853; color: #000; }
+        .btn-bonus { background: #f0b90b; color: #000; }
+
+        .bpl-tag { color: #00c853; font-weight: bold; font-size: 0.9rem; margin-top: 5px; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="card">
-            <img src="https://www.freeiconspng.com/uploads/cricket-player-png-23.png" class="fizz-img fizz-left">
-            <img src="https://www.freeiconspng.com/uploads/cricket-player-png-23.png" class="fizz-img fizz-right">
+    <div class="main-card">
+        <div class="bpl-tag">★ BPL 2026 SPECIAL ★</div>
+        
+        <img src="https://www.freeiconspng.com/uploads/cricket-player-png-23.png" class="fizz-img" alt="Mustafizur">
 
-            <div class="bpl-badge">BPL 2026 SPECIAL</div>
-            <div class="logo">KRIKYA 2026<br>BD</div>
-            <div class="sub-logo">TRUSTED PLATFORM</div>
-            
-            <div class="bonus-banner">WELCOME 100% BONUS <br> UP TO 20,000 BDT</div>
-            
-            <div class="win-box">
-                <div id="win-text"></div>
-            </div>
-
-            <div class="info-section">
-                <div class="info-item"><span>✓</span> দ্রুত ডিপোজিট (১ মিনিট)</div>
-                <div class="info-item"><span>✓</span> দ্রুত উইথড্রল (৫ মিনিট)</div>
-                <div class="info-item"><span>✓</span> মোস্তাফিজের সাথে বিপিএল ধামাকা</div>
-                <div class="info-item"><span>✓</span> ২৪/৭ কাস্টমার সাপোর্ট</div>
-            </div>
-
-            <div class="payment-row">
-                <b style="color: #D12053;">bKash</b>
-                <b style="color: #F7941D;">Nagad</b>
-                <b style="color: #8C3494;">Rocket</b>
-                <b style="color: #00adef;">Upay</b>
-            </div>
-
-            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-green">⚡ SIGN-UP NOW</a>
-            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-gold">🎁 GET BONUS</a>
+        <div class="brand-title">
+            <h1>KRIKYA BD 2026</h1>
         </div>
+
+        <div class="info-box">
+            <div>✔️ <b class="pink-text">ডিপোজিট</b> মাত্র ১ মিনিটে</div>
+            <div style="margin: 8px 0;">✔️ <b class="orange-text">উত্তোলন</b> মাত্র ৫ মিনিটে</div>
+            <div>✔️ ২৪/৭ কাস্টমার সার্ভিস</div>
+        </div>
+
+        <div class="payment-icons">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Bkash_logo.png/1200px-Bkash_logo.png" alt="bKash">
+            <img src="https://download.logo.wine/logo/Nagad/Nagad-Logo.wine.png" alt="Nagad">
+            <img src="https://www.rocket.com.bd/assets/img/rocket-logo.png" alt="Rocket">
+        </div>
+
+        <div class="slider-box">
+            <div class="slider-text">
+                <span style="color:#00c853">Sabbir***</span> WON 5,450 BDT 🎰 | 
+                <span style="color:#00c853">Mintu***</span> WON 12,800 BDT 🏏 | 
+                <span style="color:#00c853">Tanvir***</span> WON 9,200 BDT 🎡
+            </div>
+        </div>
+
+        <a href="https://www.krikya11.club/?af=AG044301" class="action-btn btn-signup">⚡ SIGN-UP NOW</a>
+        <a href="https://www.krikya11.club/?af=AG044301" class="action-btn btn-bonus">🎁 GET BONUS</a>
+
+        <p style="font-size: 0.7rem; color: #888;">© 2026 KRIKYA BD 2026 | মোস্তাফিজের সাথে বিপিএল ধামাকা</p>
     </div>
 
-    <script>
-        const winners = [
-            { n: "Sabbir***", w: "5,450 BDT ✈️" },
-            { n: "Mintu***", w: "12,800 BDT 🎰" },
-            { n: "Ariful***", w: "7,500 BDT 🏏" }
-        ];
-        let i = 0;
-        const txt = document.getElementById('win-text');
-        function show() {
-            txt.innerHTML = `<span style="color:#00c853">${winners[i].n}</span> <span style="color:white">WON</span> <span style="color:#ffa500">${winners[i].w}</span>`;
-            txt.classList.remove('animate-slide');
-            void txt.offsetWidth;
-            txt.classList.add('animate-slide');
-            i = (i + 1) % winners.length;
-        }
-        setInterval(show, 1500); 
-        show();
-    </script>
 </body>
 </html>
