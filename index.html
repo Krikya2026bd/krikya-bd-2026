@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KRIKYA Official - Fast Payout</title>
     <style>
+        /* এনিমেশন: লাইটিং বর্ডার */
         @keyframes borderGlow {
             0% { border-color: #f0b90b; box-shadow: 0 0 15px #f0b90b; }
             50% { border-color: #ff0055; box-shadow: 0 0 30px #ff0055; }
             100% { border-color: #f0b90b; box-shadow: 0 0 15px #f0b90b; }
         }
 
+        /* সাইন-আপ বাটনের পালস এনিমেশন */
         @keyframes signupPulse {
             0% { transform: scale(1); box-shadow: 0 0 10px #00c853; }
             50% { transform: scale(1.05); box-shadow: 0 0 30px #00c853; }
@@ -48,7 +50,20 @@
             font-style: italic;
         }
 
-        /* স্পিড সেকশন */
+        /* লাইভ উইন বক্স - অরেঞ্জ কালার টেক্সট */
+        .live-win-box {
+            background: rgba(255, 165, 0, 0.1);
+            border: 1px dashed #ffa500;
+            border-radius: 12px;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #ffa500; /* অরেঞ্জ কালার */
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* স্পিড মেসেজ */
         .speed-box {
             background: linear-gradient(90deg, #1e3c72, #2a5298);
             border: 1px solid #00d2ff;
@@ -64,7 +79,7 @@
             line-height: 1.4;
         }
 
-        /* পেমেন্ট মেথড লোগো স্টাইল */
+        /* পেমেন্ট মেথড লোগো */
         .payment-methods {
             display: flex;
             justify-content: center;
@@ -78,17 +93,6 @@
         .payment-methods img {
             height: 25px;
             width: auto;
-            object-fit: contain;
-        }
-
-        .live-win-box {
-            background: rgba(0, 200, 83, 0.1);
-            border: 1px dashed #00c853;
-            border-radius: 12px;
-            padding: 8px;
-            margin: 10px 0;
-            font-size: 0.85rem;
-            color: #b2ff59;
         }
 
         .icon-grid {
@@ -130,51 +134,3 @@
 
     <div class="card">
         <div class="logo">KRIKYA</div>
-        
-        <div class="live-win-box">
-            🟢 <span id="win-text">Sabbir*** just won 5,400 BDT in Aviator!</span>
-        </div>
-
-        <div class="speed-box">
-            <div class="speed-text">
-                ⚡ ডিপোজিট এবং উত্তোলন <br>
-                <span style="color: #ffcc00;">১ মিনিটের মধ্যে সম্পন্ন!</span>
-            </div>
-        </div>
-
-        <div class="payment-methods">
-            <img src="https://raw.githubusercontent.com/manik845/payment-logo/main/bkash.png" alt="bkash">
-            <img src="https://raw.githubusercontent.com/manik845/payment-logo/main/nagad.png" alt="nagad">
-            <img src="https://raw.githubusercontent.com/manik845/payment-logo/main/rocket.png" alt="rocket">
-            <img src="https://raw.githubusercontent.com/manik845/payment-logo/main/upay.png" alt="upay">
-        </div>
-
-        <div class="icon-grid">
-            <div class="icon-item"><img src="https://img.icons8.com/color/96/cricket.png">CRICKET</div>
-            <div class="icon-item"><img src="https://img.icons8.com/color/96/slot-machine.png">SLOTS</div>
-            <div class="icon-item"><img src="https://img.icons8.com/color/96/roulette.png">CASINO</div>
-            <div class="icon-item"><img src="https://img.icons8.com/color/96/airplane-take-off.png">AVIATOR</div>
-        </div>
-
-        <div class="btn-group">
-            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-green">⚡ SIGN-UP NOW</a>
-            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-gold">🎁 CLAIM FREE SPINS</a>
-        </div>
-    </div>
-
-    <script>
-        const winners = [
-            "Sabbir*** just won 5,400 BDT in Aviator!",
-            "Mintu*** just won 12,000 BDT in Slots!",
-            "Rashed*** just won 3,500 BDT in Roulette!",
-            "Ariful*** just won 8,200 BDT in Crazy Time!"
-        ];
-        let i = 0;
-        setInterval(() => {
-            document.getElementById('win-text').innerText = winners[i];
-            i = (i + 1) % winners.length;
-        }, 3000);
-    </script>
-
-</body>
-</html>
