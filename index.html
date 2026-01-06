@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KRIKYA Official - Live Wins</title>
+    <title>KRIKYA Official - 100% Bonus</title>
     <style>
-        /* পুরো কার্ডের নিওন গ্লো */
+        /* নিওন গ্লো এনিমেশন */
         @keyframes borderGlow {
             0% { border-color: #f0b90b; box-shadow: 0 0 15px #f0b90b; }
             50% { border-color: #ff0055; box-shadow: 0 0 30px #ff0055; }
             100% { border-color: #f0b90b; box-shadow: 0 0 15px #f0b90b; }
         }
 
-        /* দ্রুত স্লাইড এনিমেশন */
-        @keyframes slideFast {
-            0% { transform: translateY(50px); opacity: 0; }
-            10% { transform: translateY(0); opacity: 1; }
-            90% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-50px); opacity: 0; }
+        /* রাইট স্লাইড এনিমেশন (১.৫ সেকেন্ড) */
+        @keyframes slideInRight {
+            0% { transform: translateX(100%); opacity: 0; }
+            10% { transform: translateX(0); opacity: 1; }
+            90% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(-100%); opacity: 0; }
         }
 
-        /* সাইন আপ বাটনের লাইটিং */
-        @keyframes flashBtn {
-            0% { background-position: 0% 50%; box-shadow: 0 0 20px #00c853; }
-            50% { background-position: 100% 50%; box-shadow: 0 0 40px #b2ff59; }
-            100% { background-position: 0% 50%; box-shadow: 0 0 20px #00c853; }
+        /* বাটনের জন্য লাইটিং এনিমেশন */
+        @keyframes pulseBtn {
+            0% { transform: scale(1); box-shadow: 0 0 10px #00c853; }
+            50% { transform: scale(1.05); box-shadow: 0 0 30px #b2ff59; }
+            100% { transform: scale(1); box-shadow: 0 0 10px #00c853; }
         }
 
         body {
@@ -35,6 +35,7 @@
             align-items: center;
             min-height: 100vh;
             font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
         }
 
         .card {
@@ -49,20 +50,33 @@
         }
 
         .logo {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: 900;
             color: #f0b90b;
             text-shadow: 0 0 20px #f0b90b;
-            margin-bottom: 10px;
+            margin: 0;
             font-style: italic;
+            line-height: 1;
         }
 
-        /* লাইভ উইন ডিজাইন - একটার পর একটা আসবে */
-        .live-win-container {
+        /* বোনাস টেক্সট ডিজাইন */
+        .bonus-text {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #ff0055, #f0b90b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        /* লাইভ উইন বক্স */
+        .live-win-box {
             background: #000;
             border: 2px solid #00c853;
             border-radius: 12px;
-            height: 50px;
+            height: 45px;
             margin: 10px 0;
             overflow: hidden;
             position: relative;
@@ -71,70 +85,76 @@
             justify-content: center;
         }
 
-        .winner-item {
-            position: absolute;
-            width: 100%;
-            display: none;
+        #win-content {
+            white-space: nowrap;
             font-weight: bold;
-            animation: slideFast 1.5s ease-in-out infinite;
+            font-size: 0.95rem;
+            position: absolute;
         }
 
-        .user-name { color: #00c853; font-size: 1.1rem; }
+        .user-name { color: #00c853; }
         .won-info { color: #ffa500; }
 
-        /* পেমেন্ট লোগো (সরাসরি কোড থেকে আসবে) */
+        /* পেমেন্ট মেথড লোগো ডিজাইন (SVG) */
         .payment-methods {
             display: flex;
             justify-content: space-around;
+            align-items: center;
             background: #fff;
             padding: 10px;
             border-radius: 15px;
-            margin-bottom: 20px;
+            margin: 15px 0;
         }
 
-        .pay-icon { width: 50px; height: 30px; }
+        .pay-logo { height: 25px; width: auto; }
 
         .btn-group { display: flex; flex-direction: column; gap: 15px; }
 
         .btn {
-            padding: 20px;
+            padding: 18px;
             border-radius: 50px;
             font-size: 1.6rem;
             font-weight: 900;
             text-decoration: none;
             text-transform: uppercase;
+            display: block;
         }
 
         .btn-green {
-            background: linear-gradient(-45deg, #00c853, #b2ff59, #00c853);
-            background-size: 300% 300%;
+            background: linear-gradient(90deg, #00c853, #b2ff59);
             color: #000;
-            animation: flashBtn 2s linear infinite;
+            animation: pulseBtn 2s infinite;
         }
 
         .btn-gold { background: #f0b90b; color: #000; }
+
+        .animate-slide { animation: slideInRight 1.5s linear infinite; }
     </style>
 </head>
 <body>
 
     <div class="card">
         <div class="logo">KRIKYA</div>
+        <div class="bonus-text">Welcome 100% Bonus up to 20,000 BDT</div>
         
-        <div class="live-win-container" id="winner-box">
+        <div class="live-win-box">
+            <div id="win-content">
+                <span class="user-name" id="user-name">Sabbir***</span> 
+                <span style="color: white;"> WON </span> 
+                <span class="won-info" id="won-amount">5,450 BDT in Aviator! ✈️</span>
             </div>
-
-        <div style="color: #fff; font-weight: bold; margin: 10px 0;">⚡ ডিপোজিট ও উত্তোলন ১ মিনিটে!</div>
+        </div>
 
         <div class="payment-methods">
-            <svg class="pay-icon" viewBox="0 0 100 50"><text x="5" y="35" font-family="Arial" font-weight="900" fill="#D12053" font-size="20">bKash</text></svg>
-            <svg class="pay-icon" viewBox="0 0 100 50"><text x="5" y="35" font-family="Arial" font-weight="900" fill="#F7941D" font-size="20">Nagad</text></svg>
-            <svg class="pay-icon" viewBox="0 0 100 50"><text x="5" y="35" font-family="Arial" font-weight="900" fill="#8C3494" font-size="20">Rocket</text></svg>
-            <svg class="pay-icon" viewBox="0 0 100 50"><text x="5" y="35" font-family="Arial" font-weight="900" fill="#000" font-size="20">upay</text></svg>
+            <svg viewBox="0 0 100 40" class="pay-logo"><path fill="#D12053" d="M0 0h100v40H0z"/><text x="10" y="28" fill="white" font-weight="bold" font-size="18">bKash</text></svg>
+            <svg viewBox="0 0 100 40" class="pay-logo"><path fill="#F7941D" d="M0 0h100v40H0z"/><text x="10" y="28" fill="white" font-weight="bold" font-size="18">Nagad</text></svg>
+            <svg viewBox="0 0 100 40" class="pay-logo"><path fill="#8C3494" d="M0 0h100v40H0z"/><text x="10" y="28" fill="white" font-weight="bold" font-size="18">Rocket</text></svg>
+            <svg viewBox="0 0 100 40" class="pay-logo"><path fill="#000" d="M0 0h100v40H0z"/><text x="10" y="28" fill="#FFD200" font-weight="bold" font-size="18">upay</text></svg>
         </div>
 
         <div class="btn-group">
             <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-green">⚡ SIGN-UP NOW</a>
-            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-gold">🎁 GET BONUS</a>
+            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-gold">🎁 CLAIM BONUS</a>
         </div>
     </div>
 
@@ -148,22 +168,22 @@
             { name: "Sumon***", info: "4,100 BDT in Jili Slots! 🎰" }
         ];
 
-        let index = 0;
-        const box = document.getElementById('winner-box');
+        let i = 0;
+        const winContent = document.getElementById('win-content');
+        const userName = document.getElementById('user-name');
+        const wonAmount = document.getElementById('won-amount');
 
-        function showWinner() {
-            box.innerHTML = `
-                <div class="winner-item" style="display:block;">
-                    <span class="user-name">${winners[index].name}</span> 
-                    <span style="color:white"> WON </span> 
-                    <span class="won-info">${winners[index].info}</span>
-                </div>`;
-            index = (index + 1) % winners.length;
+        function startAnimation() {
+            userName.innerText = winners[i].name;
+            wonAmount.innerText = winners[i].info;
+            winContent.classList.remove('animate-slide');
+            void winContent.offsetWidth; 
+            winContent.classList.add('animate-slide');
+            i = (i + 1) % winners.length;
         }
 
-        // দ্রুত পরিবর্তনের জন্য ১.৫ সেকেন্ড পরপর কল করা হচ্ছে
-        setInterval(showWinner, 1500);
-        showWinner();
+        startAnimation();
+        setInterval(startAnimation, 1500); // ১.৫ সেকেন্ড গ্যাপ
     </script>
 </body>
-</html>  
+</html>
