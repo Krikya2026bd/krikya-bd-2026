@@ -134,3 +134,62 @@
 
     <div class="card">
         <div class="logo">KRIKYA</div>
+        
+        <div class="live-win-box">
+            <span id="win-text">Sabbir*** just won 5,450 BDT in Aviator! ✈️</span>
+        </div>
+
+        <div class="speed-box">
+            <div class="speed-text">
+                ⚡ ডিপোজিট এবং উত্তোলন <br>
+                <span style="color: #ffcc00;">১ মিনিটের মধ্যে সম্পন্ন!</span>
+            </div>
+        </div>
+
+        <div class="payment-methods">
+            <img src="https://raw.githubusercontent.com/manik845/payment-logo/main/bkash.png" alt="bkash">
+            <img src="https://raw.githubusercontent.com/manik845/payment-logo/main/nagad.png" alt="nagad">
+            <img src="https://raw.githubusercontent.com/manik845/payment-logo/main/rocket.png" alt="rocket">
+            <img src="https://raw.githubusercontent.com/manik845/payment-logo/main/upay.png" alt="upay">
+        </div>
+
+        <div class="icon-grid">
+            <div class="icon-item"><img src="https://img.icons8.com/color/96/cricket.png">CRICKET</div>
+            <div class="icon-item"><img src="https://img.icons8.com/color/96/slot-machine.png">SLOTS</div>
+            <div class="icon-item"><img src="https://img.icons8.com/color/96/roulette.png">CASINO</div>
+            <div class="icon-item"><img src="https://img.icons8.com/color/96/airplane-take-off.png">AVIATOR</div>
+        </div>
+
+        <div class="btn-group">
+            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-green">⚡ SIGN-UP NOW</a>
+            <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-gold">🎁 CLAIM FREE SPINS</a>
+        </div>
+    </div>
+
+    <script>
+        const winners = [
+            "Sabbir*** just won 5,450 BDT in Aviator! ✈️",
+            "Mintu*** just won 12,800 BDT in Super Ace! 🎰",
+            "Rashed*** just won 3,200 BDT in Roulette! 🎡",
+            "Ariful*** just won 7,500 BDT in Crazy Time! 🎡",
+            "Tanvir*** just won 15,200 BDT in Baccarat! 🃏",
+            "Sumon*** just won 4,100 BDT in Jili Slots! 🎰",
+            "Fahim*** just won 9,800 BDT in Cricket Star! 🏏",
+            "Emon*** just won 22,000 BDT in Mega Ball! 🎱",
+            "Noyon*** just won 6,400 BDT in Dragon Tiger! 🐯",
+            "Kamal*** just won 11,300 BDT in Sic Bo! 🎲"
+        ];
+        let i = 0;
+        setInterval(() => {
+            const winElement = document.getElementById('win-text');
+            winElement.style.opacity = 0;
+            setTimeout(() => {
+                winElement.innerText = winners[i];
+                winElement.style.opacity = 1;
+                i = (i + 1) % winners.length;
+            }, 500);
+        }, 3500);
+    </script>
+
+</body>
+</html>
