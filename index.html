@@ -1,180 +1,192 @@
-<!DOCTYPE html>
+DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krikya BD 2026 - Official</title>
+    <title>Md Mobarak Ali Profile</title>
     <style>
-        @keyframes glow {
-            0% { border-color: #ff9800; box-shadow: 0 0 10px #ff9800; }
-            50% { border-color: #00c853; box-shadow: 0 0 20px #00c853; }
-            100% { border-color: #ff9800; box-shadow: 0 0 10px #ff9800; }
-        }
-        @keyframes slideIn {
-            0% { transform: translateX(100%); opacity: 0; }
-            10% { transform: translateX(0); opacity: 1; }
-            90% { transform: translateX(0); opacity: 1; }
-            100% { transform: translateX(-100%); opacity: 0; }
-        }
-
         body {
-            background-color: #0b0e11;
-            margin: 0;
+            background-color: #080808;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
             display: flex;
             justify-content: center;
-            font-family: 'Arial', sans-serif;
-            color: white;
-            padding: 15px;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
 
-        .main-card {
-            width: 100%;
-            max-width: 380px;
-            background: #1e2329;
-            border-radius: 25px;
-            border: 3px solid #ff9800;
+        .container {
+            width: 350px;
+            padding: 30px;
+            background: #111;
             text-align: center;
-            padding: 20px;
+            border-radius: 20px;
+            border: 4px solid;
+            border-image: linear-gradient(45deg, #ff0000, #fffb00, #00ffd5, #7a00ff, #ff0000) 1;
+            animation: border-flow 4s linear infinite;
             position: relative;
-            animation: glow 4s infinite;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
         }
 
-        .fizz-img {
+        .bismillah {
+            color: #00d2ff;
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: block;
+            text-shadow: 0 0 10px #00d2ff;
+        }
+
+        /* ছবি এবং লাইটিং ফ্রেম */
+        .profile-img-container {
             width: 130px;
-            margin: 10px auto;
-            filter: drop-shadow(0 0 8px #00c853);
+            height: 130px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #ff00d4;
+            box-shadow: 0 0 20px #ff00d4;
+            animation: glow-pulse 2s infinite alternate;
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes glow-pulse {
+            from { box-shadow: 0 0 10px #ff00d4; border-color: #ff00d4; }
+            to { box-shadow: 0 0 30px #00d2ff; border-color: #00d2ff; }
+        }
+
+        .name-style {
+            font-size: 28px;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #ff00d4;
+            margin-bottom: 20px;
             display: block;
         }
-
-        .brand-box {
-            border: 3px solid #ff9800;
-            padding: 10px;
-            border-radius: 15px;
-            display: inline-block;
-            background: rgba(255, 152, 0, 0.1);
-            margin: 15px 0;
-        }
-        .brand-box h1 { color: #ff9800; margin: 0; font-size: 1.8rem; font-weight: 900; }
 
         .info-list {
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 20px;
             text-align: left;
-        }
-        /* ডিপোজিট ও উত্তোলন রঙিন স্টাইল */
-        .depo-text { color: #ff0055; font-weight: 900; font-size: 1.2rem; text-shadow: 0 0 5px rgba(255,0,85,0.3); }
-        .with-text { color: #00c853; font-weight: 900; font-size: 1.2rem; text-shadow: 0 0 5px rgba(0,200,83,0.3); }
-
-        /* পেমেন্ট মেথড নাম ও রঙ */
-        .payment-grid {
-            background: white;
-            padding: 12px;
-            border-radius: 15px;
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
-            font-weight: 900;
-            font-size: 0.85rem;
+            margin-top: 10px;
         }
 
-        .win-ticker {
-            background: #000;
-            border: 2px solid #00c853;
-            height: 45px;
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
+        .info-item {
+            color: #ccc;
+            font-size: 15px;
+            margin: 12px 0;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
         }
-        #win-text { position: absolute; white-space: nowrap; font-weight: bold; }
-        .animate-slide { animation: slideIn 1.5s linear infinite; }
+
+        .icon {
+            margin-right: 12px;
+            font-size: 20px;
+        }
+
+        .label-text {
+            color: #39ff14;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .btn-box {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 25px;
+        }
 
         .btn {
-            display: block;
-            padding: 16px;
+            padding: 10px 20px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 900;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #fff;
+            transition: 0.3s;
         }
-        .btn-signup { background: #00c853; color: #000; }
-        .btn-bonus { background: #f0b90b; color: #000; }
+
+        .btn-fb { background: #1877F2; }
+        .btn-wa { background: #25D366; }
+
+        .signature-section {
+            margin-top: 25px;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .signature {
+            font-family: 'Cursive', sans-serif;
+            font-size: 24px;
+            color: #00d2ff;
+            display: inline-block;
+            border-top: 1px solid #444;
+            padding-top: 5px;
+            font-style: italic;
+            animation: sign-glow 3s infinite alternate;
+        }
+
+        @keyframes sign-glow {
+            from { text-shadow: 0 0 5px #00d2ff; }
+            to { text-shadow: 0 0 15px #00d2ff, 0 0 20px #fff; }
+        }
+
+        @keyframes border-flow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
     </style>
 </head>
 <body>
 
-    <div class="main-card">
-        <div style="color: #00c853; font-weight: bold; font-size: 0.8rem;">★ BPL 2026 OFFICIAL PARTNER ★</div>
-        
-        <img src="https://www.freeiconspng.com/uploads/cricket-player-png-23.png" class="fizz-img" alt="Mustafizur">
+    <div class="container">
+        <span class="bismillah">বিসমিল্লাহির রহমানির রহিম</span>
 
-        <div class="brand-box">
-            <h1>KRIKYA BD 2026</h1>
+        <div class="profile-img-container">
+            <img src="https://i.postimg.cc/YqtYnGqx/FB-IMG-1760171631409.jpg" alt="Md Mobarak Ali">
         </div>
+
+        <span class="name-style">Md Mobarak Ali</span>
 
         <div class="info-list">
-            <div>✔️ <span class="depo-text">ডিপোজিট</span> মাত্র ১ মিনিটে</div>
-            <div style="margin-top: 8px;">✔️ <span class="with-text">উত্তোলন</span> মাত্র ৫ মিনিটে</div>
-            <div style="margin-top: 8px; font-size: 0.9rem;">✔️ মোস্তাফিজের সাথে বিপিএল ধামাকা</div>
+            <div class="info-item">
+                <span class="icon">👤</span> 
+                <span class="label-text">Father Name:</span> Md-Kopil Uddin.
+            </div>
+            
+            <div class="info-item">
+                <span class="icon">📍</span> 
+                <span class="label-text">Address:</span> Kutinawdanga, Nakhargonj, Nageswari.
+            </div>
+
+            <div class="info-item">
+                <span class="icon">📅</span> 
+                <span class="label-text">Date of birth:</span> 15 December 2004.
+            </div>
+
+            <div class="info-item">
+                <span class="icon">🎓</span> 
+                <span class="label-text">Education:</span> Degree Pass.
+            </div>
         </div>
 
-        <div class="payment-grid">
-            <span style="color: #D12053;">bKash</span>
-            <span style="color: #F7941D;">Nagad</span>
-            <span style="color: #8C3494;">Rocket</span>
-            <span style="color: #00adef;">Upay</span>
+        <div class="btn-box">
+            <a href="https://www.facebook.com/mh.mobarok.hossain.akul" target="_blank" class="btn btn-fb">Facebook</a>
+            <a href="https://wa.me/8801334475903" target="_blank" class="btn btn-wa">WhatsApp</a>
         </div>
 
-        <div class="win-ticker">
-            <div id="win-text"></div>
+        <div class="signature-section">
+            <div class="signature">MobaRok Ali</div>
         </div>
 
-        <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-signup">⚡ SIGN-UP NOW</a>
-        <a href="https://www.krikya11.club/?af=AG044301" class="btn btn-bonus">🎁 GET BONUS</a>
-
-        <p style="font-size: 0.7rem; color: #777;">© 2026 KRIKYA BD 2026 | Trusted & Secure</p>
+        <hr style="border: 0.1px solid #333; margin-top: 10px;">
+        <p style="color: #666; font-size: 10px; margin-top: 5px;">© ২০২৬ | বাংলাদেশ জিন্দাবাদ</p>
     </div>
-
-    <script>
-        // ১৫ জন নতুন প্লেয়ারের লিস্ট
-        const winners = [
-            { n: "Sabbir***", w: "5,450 BDT" },
-            { n: "Mintu***", w: "12,800 BDT" },
-            { n: "Ariful***", w: "3,200 BDT" },
-            { n: "Tanvir***", w: "15,200 BDT" },
-            { n: "Rakib***", w: "7,100 BDT" },
-            { n: "Sakil***", w: "22,500 BDT" },
-            { n: "Hasan***", w: "4,300 BDT" },
-            { n: "Rashed***", w: "9,600 BDT" },
-            { n: "Jamil***", w: "11,200 BDT" },
-            { n: "Emon***", w: "6,800 BDT" },
-            { n: "Nahid***", w: "18,400 BDT" },
-            { n: "Sujon***", w: "2,500 BDT" },
-            { n: "Morshed***", w: "30,000 BDT" },
-            { n: "Abir***", w: "14,700 BDT" },
-            { n: "Faruk***", w: "8,900 BDT" }
-        ];
-
-        let i = 0;
-        const txt = document.getElementById('win-text');
-
-        function show() {
-            txt.innerHTML = `<span style="color:#00c853">${winners[i].n}</span> <span style="color:white">WON</span> <span style="color:#ffa500">${winners[i].w}</span> 🎰`;
-            txt.classList.remove('animate-slide');
-            void txt.offsetWidth;
-            txt.classList.add('animate-slide');
-            i = (i + 1) % winners.length;
-        }
-
-        setInterval(show, 1500); 
-        show();
-    </script>
 
 </body>
 </html>
